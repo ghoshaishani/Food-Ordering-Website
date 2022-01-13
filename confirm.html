@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>CONFIRMATION</title>
+        <style>
+            
+            body{ font: 14px sans-serif;
+            background-repeat: no-repeat;
+    background-size: 100%; text-align: right;}
+    .wrapper{ width: 350px; padding: 20px;border-width:thin;border-radius: 0px ;text-align: right; padding-right: 10px;}
+        </style>
+    </head>
+    <body background="https://images.pexels.com/photos/1660030/pexels-photo-1660030.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+<center>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+        <br/>
+        <br/>
+
+<div class="wrapper">
+        <h1>YOUR ORDER</h1>
+        <br/>
+        <h2 id="ChickenPizza"></h2>
+        
+        <h2 id="Pepsi"></h2>
+        <h2 id="ChocoLavaCake"></h2>
+        
+        <h2 id="PaneerPizza"></h2>
+        <h3>------------------------------</h3>
+        <h2 id="total"></h2>
+<br/>
+        <button onclick="book()">CONFIRM</button>
+    </div>
+</center>
+
+        <script>
+            function getParams(){
+                var idx = document.URL.indexOf('?');
+                var params = new Array();
+                if (idx != -1) {
+                    var pairs = document.URL.substring(idx+1, document.URL.length).split('&');
+                    for (var i=0; i<pairs.length; i++){
+                        nameVal = pairs[i].split('=');
+                        params[nameVal[0]] = nameVal[1];
+                    }
+                }
+                return params;
+            }
+            params = getParams();
+            chickenpizza = unescape(params["chickenpizza"]);
+            pepsi = unescape(params["pepsi"]);
+            chocolavacake = unescape(params["chocolavacake"]);
+            paneerpizza = unescape(params["paneerpizza"]);
+
+            if(chickenpizza>0)
+            document.getElementById("ChickenPizza").innerHTML="Chicken Pizza x "+chickenpizza+" = "+chickenpizza*150+"/-";
+            if(pepsi>0)
+            document.getElementById("Pepsi").innerHTML="Pepsi X "+pepsi+" = "+pepsi*50+"/-";
+            if(chocolavacake>0)
+            document.getElementById("ChocoLavaCake").innerHTML="Choco Lava Cake X "+chocolavacake+" = "+chocolavacake*85+"/-";
+            if(paneerpizza>0)
+            document.getElementById("PaneerPizza").innerHTML="Paneer Pizza X "+paneerpizza+" = "+paneerpizza*130+"/-";
+
+            document.getElementById("total").innerHTML="         TOTAL = "+((chickenpizza*150)+(pepsi*50)+(chocolavacake*85)+(paneerpizza*130))+"/-";
+
+            function book()
+            {
+                if(confirm("ARE YOU SURE YOU WANT TO BOOK THIS"))
+                {
+                    window.location.href = "thankyou.html";
+                }
+
+            }
+
+            /*document.write("<center>");
+            document.write("<h1> YOUR ORDER: </h1>");
+            document.write("</br></br><h3>chickenpizza = " + chickenpizza + "</h3><br>");
+            document.write("pepsi = " + pepsi + "<br>");
+            document.write("chocolavacake = " + chocolavacake + "<br>");
+            document.write("paneerpizza = "+paneerpizza+"<br>");*/
+        </script>
+
+    </body>
+</html>
